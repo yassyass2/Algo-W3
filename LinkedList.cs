@@ -7,21 +7,41 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
     public SingleNode<T>? Head;
     private int count;
 
-    public SinglyLinkedList()
+    public SinglyLinkedList(SingleNode<T>? head = null, int count)
     {
-        throw new NotImplementedException();
+        Head = head;
+        this.count = count;
     }
 
     public int Count => count;
 
     public void AddFirst(T value)
     {
-        throw new NotImplementedException();
+        SingleNode<T> newNode = new SingleNode<T>(value, Head);
+
+        Head = newNode;
+
+        count++;
     }
 
     public void AddLast(T value)
     {
-        throw new NotImplementedException();
+        SingleNode<T> newNode = new SingleNode<T>(value);
+        if (Head == null){
+            Head = newNode;
+        }
+        else{
+            SingleNode<T> current = Head;
+
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+
+            current.Next = newNode;
+        }
+
+        count++;
     }
 
     public bool Remove(T value)
