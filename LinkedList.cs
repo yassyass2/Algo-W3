@@ -7,10 +7,10 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
     public SingleNode<T>? Head;
     private int count;
 
-    public SinglyLinkedList(SingleNode<T>? head = null, int count = 0)
+    public SinglyLinkedList()
     {
-        Head = head;
-        this.count = count;
+        Head = null;
+        count = 0;
     }
 
     public int Count => count;
