@@ -70,7 +70,7 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
             return default;
         }
         var current = Head;
-        while (current != null && current.Value != value){
+        while (current != null && current.Value.CompareTo(value) != 0){
             current = current.Next;
         }
         return current;
