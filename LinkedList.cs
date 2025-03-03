@@ -44,7 +44,7 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
     public bool Remove(T value)
     {
-        if (Head == default) return false;
+        if (Head == null) return false;
 
 
         SingleNode<T>? prev = null;
@@ -59,7 +59,8 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
         if (current == null) return false;
 
-        prev.Next = current.Next;
+        if (prev == null) Head = Head.Next;
+        else prev.Next = current.Next;
 
         return true;
     }
