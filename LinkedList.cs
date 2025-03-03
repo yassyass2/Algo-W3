@@ -32,9 +32,7 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
         }
         else{
             SingleNode<T> current = Head;
-
-            while (current.Next != null)
-            {
+            while (current.Next != null){
                 current = current.Next;
             }
 
@@ -58,7 +56,16 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
     public void AddSorted(T value)
     {
-        throw new NotImplementedException();
+        SingleNode<T> newNode = new SingleNode<T>(value);
+        if (Head == null){
+            Head = newNode;
+        }
+        var current = Head;
+        while (current.Next != null && current.Next.Value.CompareTo(value) < 0){
+            current = current.Next;
+        }
+        var temp = current.Next;
+        current.Next = new SingleNode<T>(value, temp);
     }
 
     public void Clear()
