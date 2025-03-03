@@ -44,15 +44,39 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
     public bool Remove(T value)
     {
-        throw new NotImplementedException();
+        if (Head == default) return false;
+
+
+        SingleNode<T>? prev = null;
+        SingleNode<T>? current = Head;
+
+        while (current != null && current.Value.CompareTo(value) != 0)
+        {
+            prev = current;
+            current = current.Next;
+        }
+
+
+        if (current == null) return false;
+
+        prev.Next = current.Next;
+
+        return true;
     }
 
     public SingleNode<T>? Search(T value)
     {
-        throw new NotImplementedException();
+        if (Head == null){
+            return default;
+        }
+        var current = Head;
+        while (current != null && current.Value != value){
+            current = current.Next;
+        }
+        return current;
     }
 
-    public bool Contains(T value) => throw new NotImplementedException();
+    public bool Contains(T value) => Search(value) != null;
 
     public void AddSorted(T value)
     {
@@ -70,7 +94,8 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
     public void Clear()
     {
-        throw new NotImplementedException();
+        count = 0;
+        Head = null;
     }
 
     public IEnumerator<T> GetEnumerator()
