@@ -61,7 +61,7 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
             Head = newNode;
         }
         var current = Head;
-        while (current.Next != null && current.Next.Value.CompareTo(value) < 0){
+        while (current.Next != null && current.Next.Value.CompareTo(value) >= 0){
             current = current.Next;
         }
         var temp = current.Next;
