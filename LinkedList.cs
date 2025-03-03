@@ -58,6 +58,7 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
     {
         if (Head == null || Head.Value.CompareTo(value) > 0){
             AddFirst(value);
+            return;
         }
 
         var current = Head;
