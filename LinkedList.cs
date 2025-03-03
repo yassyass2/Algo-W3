@@ -56,16 +56,15 @@ public class SinglyLinkedList<T> : ILinkedList<T> where T : IComparable<T>
 
     public void AddSorted(T value)
     {
-        SingleNode<T> newNode = new SingleNode<T>(value);
-        if (Head == null){
-            Head = newNode;
+        if (Head == null || Head.Value.CompareTo(value) > 0){
+            Head = new SingleNode<T>(value, Head);
         }
+
         var current = Head;
-        while (current.Next != null && current.Next.Value.CompareTo(value) >= 0){
+        while (current.Next != null && current.Next.Value.CompareTo(value) > 0){
             current = current.Next;
         }
-        var temp = current.Next;
-        current.Next = new SingleNode<T>(value, temp);
+        current.Next = new SingleNode<T>(value, current.Next);
     }
 
     public void Clear()
